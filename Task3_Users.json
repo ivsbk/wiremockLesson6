@@ -1,0 +1,19 @@
+{
+	"request": {
+		"urlPattern": "/user/test", 
+		"method": "POST",
+		"bodyPatterns": [{
+		"matchesXPath" : "users[count(user[age>=18]) = 3]",
+		"matchesXPath" : "users[count(user[number(substring(name,5))>0])=count(user)]"
+	}]
+	
+	},
+	"response":{
+		"status": 200,
+		"delayDistribution": {
+			"type": "uniform",
+			"lower":440,
+			"upper":460
+		}
+	}
+}
