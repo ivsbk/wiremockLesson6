@@ -3,9 +3,16 @@
 		"urlPattern": "/user/test", 
 		"method": "POST",
 		"bodyPatterns": [{
-		"matchesXPath" : "users[count(user[age>=18]) = 3]",
-		"matchesXPath" : "users[count(user[number(substring(name,5))>0])=count(user)]"
-	}]
+		 "and":[{
+			"matchesXPath" : "users[count(user[age>=18]) = 3]"
+			},
+			{
+			"matchesXPath" : "users[count(user[number(substring(name,5))>=0])=count(user)]"
+			},
+			{
+			"matchesXPath" : "users[count(user[name[starts-with(., 'user')]])=count(user)]"
+			}]
+		}]
 	
 	},
 	"response":{
